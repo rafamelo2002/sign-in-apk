@@ -1,0 +1,64 @@
+name: Compilar APK Android (Sign_in)
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do Código
+      uses: actions/checkout@v4
+
+    - name: Configurar Java JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Aceitar Licenças do Android SDK
+      run: |
+        yes | sdkmanager --licenses || true
+
+    - name: Gerar Gradle Wrapper e Configurar Permissões
+      run: |
+        gradle wrapper --gradle-version 8.4 --distribution-type bin
+        chmod +x gradlew
+
+    - name: Compilar APK com Gradle
+      run: ./gradlew assembleDebug --stacktrace
+
+    - name: Renomear APK de saída
+      run: |
+        cp app/build/outputs/apk/debug/app-debug.apk Sign_in-debug.apk
+
+    - name: Fazer Upload do Arquivo APK para Download
+      uses: actions/upload-artifact@v4
+      with:
+        name: Sign_in-Android-APK
+        path: Sign_in-debug.apk
+        retention-days: 30
+
+    - name: Criar Release Automática com Download Direto do APK
+      if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main'
+      uses: softprops/action-gh-release@v2
+      with:
+        files: Sign_in-debug.apk
+        tag_name: v1.0.0
+        name: "Sign in v1.0.0 (.APK)"
+        body: |
+          ### 🎉 Seu APK Android está pronto para instalação!
+          - **App:** Sign in
+          - **Pacote:** `com.aistudio.signin`
+          - **Versão:** 1.0.0
+          - **URL Alvo:** https://ai.studio/apps/592377d5-e290-43f4-80ab-0794134340f6
+          
+          Baixe o arquivo `Sign_in-debug.apk` abaixo e instale diretamente no seu celular Android.
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

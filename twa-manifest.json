@@ -1,0 +1,18 @@
+{
+  "packageId": "com.aistudio.signin",
+  "host": "ai.studio",
+  "name": "Sign in",
+  "launcherName": "Sign in",
+  "display": "fullscreen",
+  "themeColor": "#10b981",
+  "navigationColor": "#10b981",
+  "backgroundColor": "#0f172a",
+  "enableNotifications": true,
+  "startUrl": "/apps/592377d5-e290-43f4-80ab-0794134340f6",
+  "iconUrl": "/icon-512.png",
+  "maskableIconUrl": "/icon-512.png",
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "Studio2APK"
+}

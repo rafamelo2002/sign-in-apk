@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sign in</string>
+    <string name="target_url">https://ai.studio/apps/592377d5-e290-43f4-80ab-0794134340f6</string>
+    <string name="offline_title">Sem Conexão à Internet</string>
+    <string name="offline_message">Verifique sua conexão Wi-Fi ou dados móveis para continuar usando o Sign in.</string>
+    <string name="offline_retry">Tentar Novamente</string>
+    <string name="exit_prompt">Pressione novamente para sair do aplicativo</string>
+</resources>

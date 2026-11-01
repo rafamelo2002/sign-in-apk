@@ -1,0 +1,23 @@
+{
+  "name": "Sign in",
+  "short_name": "Sign in",
+  "start_url": "https://ai.studio/apps/592377d5-e290-43f4-80ab-0794134340f6",
+  "display": "fullscreen",
+  "background_color": "#0f172a",
+  "theme_color": "#10b981",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
